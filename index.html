@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+<body>
+    <script>
+        console.log("Hello World");
+        
+        function getComputerChoice()
+        {
+            let choice = Math.floor(Math.random() * 3);
+
+            if (choice == 0)
+            {
+                return "rock";
+            }
+            else if (choice == 1)
+            {
+                return "paper";
+            }
+            else
+            {
+                return "scissors";
+            }
+
+        }
+
+        function playRound(playerSelection)
+        {
+            let playerChoice = playerSelection.toLowerCase();
+            console.log(playerChoice);
+            let compChoice = getComputerChoice();
+         
+         
+            if (playerChoice != "rock" || playerChoice != "paper" || playerChoice != "scissors" )
+            {
+                return "That is not a valid input! Please input rock, paper, or scissors";
+            }
+           else if (playerChoice == compChoice)
+            {
+                return "Tie! You both chose " + playerChoice;
+            }
+            else if ((playerChoice == "rock" && compChoice == "scissors") || (playerChoice == "paper" && compChoice == "rock") ||(playerChoice == "scissors" && compChoice == "paper"))
+            {
+                return "You win! " + playerChoice + " beats " + compChoice;
+            }
+
+            else
+            {
+                return "You lose! " + compChoice + " beats " + playerChoice;
+            }
+
+        }
+    </script>
+    
+</body>
+</html>
