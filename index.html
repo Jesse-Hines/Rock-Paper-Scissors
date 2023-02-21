@@ -29,31 +29,76 @@
 
         }
 
-        function playRound(playerSelection)
+        function playRound()
         {
-            let playerChoice = playerSelection.toLowerCase();
+            
+            let playerChoice = prompt("Choose rock, paper, or scissors!").toLowerCase();
             console.log(playerChoice);
             let compChoice = getComputerChoice();
          
          
-            if (playerChoice != "rock" || playerChoice != "paper" || playerChoice != "scissors" )
+            
+            if (playerChoice == compChoice)
             {
-                return "That is not a valid input! Please input rock, paper, or scissors";
-            }
-           else if (playerChoice == compChoice)
-            {
-                return "Tie! You both chose " + playerChoice;
+                return 0;
+                // return "Tie! You both chose " + playerChoice;
             }
             else if ((playerChoice == "rock" && compChoice == "scissors") || (playerChoice == "paper" && compChoice == "rock") ||(playerChoice == "scissors" && compChoice == "paper"))
             {
-                return "You win! " + playerChoice + " beats " + compChoice;
+                return 1;
+                // return "You win! " + playerChoice + " beats " + compChoice;
             }
-
+            
+            else if (playerChoice == "rock" && compChoice == "paper" || playerChoice == "paper" && compChoice == "scissors" || playerChoice == "scissors" && compChoice == "rock")
+            {
+                return -1;
+                // return "You lose! " + compChoice + " beats " + playerChoice;
+            }
             else
             {
-                return "You lose! " + compChoice + " beats " + playerChoice;
+                return 0;
+                // return "Invalid input! Please input rock, paper, or scissors";
             }
 
+        }
+
+        function game()
+        {
+            let playerScore = 0;
+            let compScore = 0;
+            for (let i = 0; i < 5; i++)
+            {
+                let game = playRound();
+                
+                if (game == 1)
+                {
+                    playerScore++;
+                    console.log("You won this round! The score is " + playerScore + " - " + compScore);
+                    
+                }
+                else if (game == -1)
+                {
+                    compScore++;
+                    console.log("You lost this round, the score is " + playerScore + " - " + compScore);
+                    
+                }
+                else{
+                    console.log("Tie! The score is still " + playerScore + " - " + compScore);
+                }
+                
+            }
+            if (playerScore > compScore)
+            {
+                return "You win! You won " + playerScore + " rounds and the computer won " + compScore;
+            }
+            else if (compScore < playerScore)
+            {
+                return "You lose! You won " + playerScore + " rounds and the computer won " + compScore;
+            }
+            else 
+            {
+                return "You tied! You both won " + playerScore + " rounds!"; 
+            }
         }
     </script>
     
